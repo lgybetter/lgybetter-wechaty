@@ -25,6 +25,24 @@ Wechaty.instance()
 		const content = m.content()
 		const room = m.room()
 
+		if (m.self()) {
+			return
+		}
+		if (/开始刷新/.test(content)) {
+			setTimeout(() => {
+				m.say('tomorrow will be better!')
+				console.log('tomorrow will be better!')
+			}, 5000)
+			return
+		}
+		if (/tomorrow will be better!/.test(content)) {
+			setTimeout(() => {
+				m.say('开始刷新')
+				console.log('开始刷新')
+			}, 5000)
+			return
+		}
+
 		if (room) {
 			console.log(`Room: ${room.topic()} Contact: ${contact.name()} Content: ${content}`)
 		} else {
@@ -32,17 +50,7 @@ Wechaty.instance()
 			m.say(`你好${contact.name()}，我目前暂时不在，稍后联系你`)
 		}
 
-		if (m.self()) {
-			return
-		}
-		if (/开始刷新/.test(content)) {
-			m.say('tomorrow will be better!')
-			console.log('tomorrow will be better!')
-		}
-		if (/tomorrow will be better!/.test(content)) {
-			m.say('开始刷新')
-			console.log('开始刷新')
-		}
+		
 
 		// if (/我要加群/.test(content)) {
 		// 	let keyroom = await Room.find({ topic: "自家人" })
