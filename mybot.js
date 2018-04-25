@@ -30,6 +30,7 @@ Wechaty.instance()
 			console.log(`Room: ${room.topic()} Contact: ${contact.name()} Content: ${content}`)
 		} else {
 			console.log(`Contact: ${contact.name()} Content: ${content}`)
+			m.say(`你好${contact.name()}，我目前暂时不在，稍后联系你`)
 		}
 
 		if (m.self()) {
@@ -40,7 +41,6 @@ Wechaty.instance()
 			}, 1000 * 60)
 			return
 		}
-		m.say(`你好${contact.name()}，我目前暂时不在，稍后联系你`)
 		// if (/你好/.test(content)) {
 		// 	m.say("mentor 真帅！")
 		// }
