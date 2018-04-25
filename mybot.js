@@ -1,5 +1,4 @@
 const { Wechaty, Room } = require('wechaty')
-let my;
 
 Wechaty.instance()
 	.on('scan', (url, code) => {
@@ -37,13 +36,12 @@ Wechaty.instance()
 			return
 		}
 		if (/开始刷新/.test(content)) {
-			if (!my) {
-				my = m
-				setInterval(() => {
-					my.say('tomorrow will be better!')
-					console.log('my')
-				}, 1000 * 60)
-			}
+			m.say('tomorrow will be better!')
+			console.log('tomorrow will be better!')
+		}
+		if (/tomorrow will be better!/.test(content)) {
+			m.say('开始刷新')
+			console.log('开始刷新')
 		}
 
 		// if (/我要加群/.test(content)) {
