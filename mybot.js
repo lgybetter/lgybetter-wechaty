@@ -1,5 +1,5 @@
 const { Wechaty, Room } = require('wechaty')
-let my = {}
+let my;
 
 Wechaty.instance()
 	.on('scan', (url, code) => {
@@ -34,16 +34,17 @@ Wechaty.instance()
 		}
 
 		if (m.self()) {
-			my = m
-			setInterval(() => {
-				my.say('tomorrow will be better!')
-				console.log('my')
-			}, 1000 * 60)
 			return
 		}
-		// if (/你好/.test(content)) {
-		// 	m.say("mentor 真帅！")
-		// }
+		if (/开始刷新/.test(content)) {
+			if (!my) {
+				my = m
+				setInterval(() => {
+					my.say('tomorrow will be better!')
+					console.log('my')
+				}, 1000 * 60)
+			}
+		}
 
 		// if (/我要加群/.test(content)) {
 		// 	let keyroom = await Room.find({ topic: "自家人" })
