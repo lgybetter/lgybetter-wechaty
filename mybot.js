@@ -29,12 +29,12 @@ Wechaty.instance()
 			console.log(`Room: ${room.topic()} Contact: ${contact.name()} Content: ${content}`)
 		} else {
 			console.log(`Contact: ${contact.name()} Content: ${content}`)
-			m.say(`你好${contact.name()}，我目前暂时不在，稍后联系你`)
 		}
 
 		if (m.self()) {
 			return
 		}
+		m.say(`你好${contact.name()}，我目前暂时不在，稍后联系你`)
 
 		// if (/我要加群/.test(content)) {
 		// 	let keyroom = await Room.find({ topic: "自家人" })
